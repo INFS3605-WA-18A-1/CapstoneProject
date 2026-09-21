@@ -1,0 +1,26 @@
+name: docs-test
+on:
+  push:
+    branches:
+      - dev
+  pull_request:
+    branches:
+      - main
+      - dev
+    paths:
+      - 'docs-site/**'
+      - 'requirements.txt'
+      - '.github/workflows/docs-test.yml'
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: docs-site
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: pip install -r ../requirements.txt
+      - run: mkdocs build --strict

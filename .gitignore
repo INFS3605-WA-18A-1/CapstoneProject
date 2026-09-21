@@ -1,0 +1,2 @@
+#Ignoring the environment folder for committing
+.venv/
