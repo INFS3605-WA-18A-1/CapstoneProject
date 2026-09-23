@@ -1,11 +1,17 @@
 site_name: INFS3605 - Capstone Project
 site_url: https://infs3605-wa-18a-1.github.io/CapstoneProject/
+site_description: Designing an AI solution for SMB founders so decision making can be distributed within the organisation
 repo_url: https://github.com/INFS3605-WA-18A-1/CapstoneProject
 
 theme:
   name: material
+  custom_dir: overrides
   features:
+    - navigation.tabs
     - navigation.sections
+    - navigation.indexes
+    - navigation.footer
+    - navigation.tracking
     - navigation.top
     - content.code.copy
   palette:
@@ -20,6 +26,9 @@ theme:
         icon: material/brightness-4
         name: Switch to light mode
 
+extra_css:
+  - stylesheets/extra.css
+
 markdown_extensions:
   - admonition
   - pymdownx.details
@@ -27,3 +36,23 @@ markdown_extensions:
   - toc:
       permalink: true
 
+nav:
+  - Home: index.md
+  - Market research:
+      - Market Research: market-research.md
+      - Market Research Report: market-research-report.md
+  - Design:
+      - Design: design.md
+      - Design Report: design-report.md
+  - Testing:
+      - UAT Testing: testing.md
+      - Impact Delivery Report: impact-report.md
+  - Implementation:
+      - Implementation: implementation.md
+      - Implementation Report: implementation-report.md
+  - Contribution Logs:
+      - Kevin: contribution-logs/kevin.md
+      - John: contribution-logs/john.md
+      - Ho Nam: contribution-logs/ho-nam.md
+      - Lena: contribution-logs/lena.md
+      - Sophia: contribution-logs/sophia.md

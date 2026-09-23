@@ -1,2 +1,4 @@
 #Ignoring the environment folder for committing
 .venv/
+# MkDocs build output
+docs-site/site/
