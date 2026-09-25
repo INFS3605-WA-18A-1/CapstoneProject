@@ -46,7 +46,7 @@ The main blocker for AI usage depends on the market, and on whether the business
 
 **Blockers are different by sector.** The [tracker](https://www.ai.gov.au/news-and-insights/blog/ai-adoption-insights-december-2025-february-2026) splits sectors: construction and agriculture are below 30% adoption, while health, education and services are above 50%. An earlier quarter put construction at 34% adopting and 25% not aware of how to use AI ([National AI Centre, 2024 Q4](https://www.industry.gov.au/news/ai-adoption-australian-businesses-2024-q4)). The [ABS figures](https://www.abs.gov.au/statistics/industry/technology-and-innovation/characteristics-australian-business/latest-release) show a similar split (construction 6%, info media & telco 38%). This is why the next section looks at where the gap is largest.
 
-# High Potential Markets
+## High Potential Markets
 
 "High potential" here means **lots of businesses × low current AI use × a heavy admin load that AI is already good at** (quoting, invoicing, scheduling, bookkeeping). The [ABS Business Characteristics Survey](https://www.abs.gov.au/statistics/industry/technology-and-innovation/characteristics-australian-business/latest-release) gives the strictest AI-use figures by industry. Business counts are from [ABS Counts of Australian Businesses](https://www.abs.gov.au/statistics/economy/business-indicators/counts-australian-businesses-including-entries-and-exits/latest-release), with the construction count via [Money.com.au](https://www.money.com.au/business-loans/australian-business-statistics) (June 2025):
 
