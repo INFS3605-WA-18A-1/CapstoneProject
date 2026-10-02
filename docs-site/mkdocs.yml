@@ -51,7 +51,9 @@ nav:
       - Implementation: implementation.md
       - Implementation Report: implementation-report.md
   - Contribution Logs:
-      - Kevin: contribution-logs/kevin.md
+      - Kevin: 
+         - Week 2: contribution-logs/Kevin's Contribution/week 2.md
+         - Week 3: contribution-logs/Kevin's Contribution/week 3.md
       - John: contribution-logs/john.md
       - Ho Nam: contribution-logs/ho-nam.md
       - Lena: contribution-logs/lena.md
