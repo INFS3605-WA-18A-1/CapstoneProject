@@ -38,9 +38,9 @@ markdown_extensions:
 
 nav:
   - Home: index.md
-  - Market research:
+  - Research:
       - Market Research: market-research.md
-      - Market Research Report: market-research-report.md
+      - Problem Statement Refinement: prb-st-refinement.md
   - Design:
       - Design: design.md
       - Design Report: design-report.md

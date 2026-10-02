@@ -1,11 +1,25 @@
 # Market Research
 
-## Problem Statement V 1.0
+## Problem Statement V 0.1
 > Currently the version of this document is from the seminar **check individual contribution for additional problem statements**.
 
 The main problem facing individual property managers is the follow up and continual re-scheduling of contractors for fixing repair issues that have arisen for current tenants. This affects the current tenants and property owners as the former needs to live with the issues for a prolonged period of time and the property owner needs to pay additional funds to complete repairs.
 
 This needs to change as it adds additional load to the property managers administrative processes and hinders the SMB from growth in management of additional properties.
+
+## Problem Statement V 1
+**Reframed Problem Statement**
+>With aging buildings and lacking incentives to repair, property managers spend too much time coordinating maintainence repairs for severe repairs. It affects the small or individual property managers who spend a majority of their time on communication and matianence admin work. This process bottleneck needs to change because it reduces property managers ability to satisfy residents and gain additional properties for management.
+
+**HMW** help small property managers coordinate severe building repairs with less time spent on communication and admin, so they can keep residents satisfied and take on more properties?
+
+1. Martin, C. et al. (June 2025). [_Rights at Risk: Rising Rents and Repercussions_](https://www.unsw.edu.au/newsroom/news/2025/06/seven-in-ten-renters-scared-to-ask-for-repairs-report). UNSW City Futures Research Centre with the ACOSS-UNSW Sydney Poverty and Inequality Partnership, National Shelter and NARO. It is a national survey of 1,019 private renters.
+	- 50% of renters live in homes needing repairs, and 10% need urgent repairs.
+	- 74% had some defect or issue. The most common were pests (31%), leaks or flooding (24%), hot water problems (21%) and mould in bathrooms (18%).
+	- 68% worry that asking for repairs could trigger a rent increase, and 56% fear eviction. That tension makes repair coordination harder for managers.
+	- It is not Sydney-specific, and it covers tenants rather than managers' time.
+2. Aidan Devine (Sept 2025). [Dirty truth behind rise of horror living conditions in rental homes](https://www.realestate.com.au/news/dirty-truth-behind-rise-of-horror-living-conditions-in-rental-homes/). Survey of 148 landlords 
+	- Finder survey of 148 landlords found that two in five (38 per cent) have had a tenant wait longer than is reasonable for a repair in the last year.
 
 <h3> Who are they?</h3>
 According to the latest [ABS data](https://www.abs.gov.au/statistics/economy/business-indicators/counts-australian-businesses-including-entries-and-exits/jul2022-jun2026) (as at 30 June 2026), there were 2.8 million actively trading businesses in Australia, with 996,203 of them employing staff, which means roughly 1.82 million had no employees at all. Small businesses (fewer than 20 employees) make up 97% of all actively trading businesses, or about 2.7 million, so the great majority of small businesses are non-employing sole traders or partnerships. On employment, the most recent figures show small businesses employed over 5 million people, which is 39% of the private sector workforce in 2023-24 ([ASBFEO Small Business Data Portal](https://www.asbfeo.gov.au/small-business-data-portal/number-small-businesses-australia)).

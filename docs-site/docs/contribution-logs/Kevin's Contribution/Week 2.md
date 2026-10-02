@@ -1,5 +1,3 @@
-# Kevin
-
 ## Week 2 Contributions
 
 - Created documentation page for easy collaboration and sharing of files and relevant knowledge with tutors.
