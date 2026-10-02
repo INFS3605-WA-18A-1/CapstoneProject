@@ -51,10 +51,18 @@ nav:
       - Implementation: implementation.md
       - Implementation Report: implementation-report.md
   - Contribution Logs:
-      - Kevin: 
-         - Week 2: contribution-logs/Kevin's Contribution/week 2.md
-         - Week 3: contribution-logs/Kevin's Contribution/week 3.md
-      - John: contribution-logs/john.md
-      - Ho Nam: contribution-logs/ho-nam.md
-      - Lena: contribution-logs/lena.md
-      - Sophia: contribution-logs/sophia.md
+      - Kevin:
+          - Week 2: contribution-logs/Kevin's Contribution/Week 2.md
+          - Week 3: contribution-logs/Kevin's Contribution/Week 3.md
+      - John:
+          - Week 2: contribution-logs/John's Contribution/Week 2.md
+          - Week 3: contribution-logs/John's Contribution/Week 3.md
+      - Ho Nam:
+          - Week 2: contribution-logs/Ho Nam's Contribution/Week 2.md
+          - Week 3: contribution-logs/Ho Nam's Contribution/Week 3.md
+      - Lena:
+          - Week 2: contribution-logs/Lena's Contribution/Week 2.md
+          - Week 3: contribution-logs/Lena's Contribution/Week 3.md
+      - Sophia:
+          - Week 2: contribution-logs/Sophia's Contribution/Week 2.md
+          - Week 3: contribution-logs/Sophia's Contribution/Week 3.md

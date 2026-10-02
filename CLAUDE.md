@@ -21,7 +21,7 @@ docs-site/          # MkDocs project root — run mkdocs commands from here
   docs/             # Markdown source; every page must be listed in nav
     index.md        # front matter `template: home.html`; its body is NOT rendered
     stylesheets/extra.css   # custom CSS (landing-page .mdx-* hero styles)
-    contribution-logs/<member>.md
+    contribution-logs/<Member>'s Contribution/Week N.md   # one folder per member, one file per week
 requirements.txt    # pinned Python deps (repo root)
 ```
 
