@@ -38,6 +38,7 @@ markdown_extensions:
 
 nav:
   - Home: index.md
+  - Intro to Git & Workflows: how-to-git.md
   - Research:
       - Market Research: market-research.md
       - Problem Statement Refinement: prb-st-refinement.md
