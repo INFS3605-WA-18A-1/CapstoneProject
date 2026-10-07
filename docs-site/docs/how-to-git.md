@@ -46,25 +46,7 @@ Once you reach this page, click on clone and enter the following link to clone t
 https://github.com/INFS3605-WA-18A-1/CapstoneProject.git
 ```
 
-## 3. Create the `dev` branch (once, by one team member)
-
-`main` is the published branch, so every push to it deploys the site. `dev` is our working branch.
-
-```bash
-git checkout main
-git pull origin main
-git checkout -b dev          # create dev from main and switch to it
-git push -u origin dev       # publish dev to GitHub and track it
-```
-
-Everyone else just fetches it:
-
-```bash
-git fetch origin
-git checkout dev
-```
-
-## 4. Daily workflow
+## 3. Daily workflow
 >All changes being made should be communicated in the group chat but in case something is being missed, make sure to frequently checkout before starting development.
 
 Use the following commands for daily work:
@@ -87,7 +69,7 @@ git push origin dev
 If you are adding any documentation made by an agent, please use the open preview using either `Ctrl+K, V`. Or the following UI button.
 ![View MD](Images/View%20MD.png)
 
-## 5. Publish to `main`
+## 4. Publish to `main`
 To push your work to main where our hosting services and documentation can update on them, follow the following steps.
 
 **1. Push your work to `dev`.**
