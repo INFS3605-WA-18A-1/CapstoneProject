@@ -65,6 +65,9 @@ git checkout dev
 ```
 
 ## 4. Daily workflow
+>All changes being made should be communicated in the group chat but in case something is being missed, make sure to frequently checkout before starting development.
+
+Use the following commands for daily work:
 
 ```bash
 git checkout dev
@@ -79,23 +82,20 @@ git push origin dev
 ```
 
 !!! tip
-    Pull before you start working and before you push. It avoids most merge conflicts.
+    **Pull** before you start working and before you push. It avoids most merge conflicts.
 
-## 5. Preview the site before pushing
+If you are adding any documentation made by an agent, please use the open preview using either `Ctrl+K, V`. Or the following UI button.
+![View MD](Images/View%20MD.png)
 
-```bash
-python -m venv .venv && source .venv/bin/activate && pip install -r requirements.txt   # first time only
-cd docs-site
-mkdocs build --strict        # must pass; this is what CI runs
-mkdocs serve                 # live preview at http://127.0.0.1:8000
-```
-
-## 6. Publish to `main`
+## 5. Publish to `main`
+To push your work to main where our hosting services and documentation can update on them, follow the following steps.
 
 1. Push your work to `dev`.
 2. On GitHub, open a **Pull Request** from `dev` into `main`.
 3. Wait for the **docs-test** check to pass, get a teammate to review, then merge.
 4. Merging to `main` automatically deploys the site.
+
+
 
 Never push to `gh-pages` by hand; CI owns that branch.
 
