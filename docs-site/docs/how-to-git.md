@@ -90,12 +90,29 @@ If you are adding any documentation made by an agent, please use the open previe
 ## 5. Publish to `main`
 To push your work to main where our hosting services and documentation can update on them, follow the following steps.
 
-1. Push your work to `dev`.
+**1. Push your work to `dev`.**
+
+![Git Commit](Images/S1-Git%20Commit.png)
+*Go to the source control tab and then add comments and commit changes to your local git*
+
+![Git Sync](Images/S2-Confirm%20Git%20Stage.png)
+*Click yes on staging to push to dev branch*
+
+![Sync Changes](Images/S3-Sync%20Change.png)
+*To make sure you changes are synced, click the sync changes*
+
+![Sync Done](Images/S4-Sync%20Done.png)
+*Once you reach this screen move to the github repo at the following link: https://github.com/INFS3605-WA-18A-1/CapstoneProject/tree/dev*
+
 2. On GitHub, open a **Pull Request** from `dev` into `main`.
+![Create PR](Images/S5-Create%20PR.png)
+*Create your PR first by clicking teh following*
+![Add Comments](Images/S6-Add%20Comments.png)
+*Add comments into your PR and make sure they are descriptive*
 3. Wait for the **docs-test** check to pass, get a teammate to review, then merge.
+![Auto Merging](Images/S7-PR%20Created.png)
+*Once all changes have passes the checks that are put into place **may change at a later time once development starts**. Contact **@Kevin He** or **@John Le** for merging into the main branch.
 4. Merging to `main` automatically deploys the site.
-
-
 
 Never push to `gh-pages` by hand; CI owns that branch.
 
