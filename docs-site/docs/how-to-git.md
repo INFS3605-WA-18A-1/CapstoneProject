@@ -2,7 +2,7 @@
 
 This page walks through the steps for working on this repository with Git. The site is published from `main`; day-to-day work happens on `dev`.
 
-To maintain control of changes @KevinHe and @JohnLe have been assigned as the reviewers of merge requests.
+To maintain control of changes **@Kevin He** and **@John Le** have been assigned as the reviewers of merge requests.
 
 > All changes that are pushed to `dev` will not be viewable in the docs website or in Github until either Kevin or John approve.
 
