@@ -1,7 +1,7 @@
 # Implementation Document V1
 
 ## Feature Description and Technology Usage
-This section covers the core and secondary features and the technologies used to implement them. The MVP is a single web app that also works in mobile browsers, built over 4 weeks. Domain terms such as maintenance request, ticket, job and max repair cost are defined in [CONTEXT.md](CONTEXT.md), and the key decisions are recorded in [docs/adr/](docs/adr/).
+This section covers the core and secondary features and the technologies used to implement them. The MVP is a single web app that also works in mobile browsers, built over 4 weeks. Domain terms such as maintenance request, ticket, job and max repair cost are defined in CONTEXT.md, and the key decisions are recorded in `docs/adr/`.
 
 ### Feature List
 **Core features (MVP):**
@@ -72,16 +72,16 @@ This section covers the core and secondary features and the technologies used to
 
 ***
 ### Technology Implementation
-The product has four main areas: communication management, classification, tradie recommendation, and scheduling and approvals. They're built as one app with internal modules (intake agent, tickets, quotes, scheduling, notifications), with the AI agent running as a background worker inside it, rather than as separate microservices. A team of 5 can't deploy and connect several services in 4 weeks, and module boundaries give the same separation ([ADR-0001](docs/adr/0001-single-app-with-internal-modules.md)).
+The product has four main areas: communication management, classification, tradie recommendation, and scheduling and approvals. They're built as one app with internal modules (intake agent, tickets, quotes, scheduling, notifications), with the AI agent running as a background worker inside it, rather than as separate microservices. A team of 5 can't deploy and connect several services in 4 weeks, and module boundaries give the same separation (ADR-0001).
 
-Only property managers have accounts. Tenants, tradies and property owners use their existing channels, apart from the no-login photo upload page ([ADR-0002](docs/adr/0002-only-property-managers-have-accounts.md)).
+Only property managers have accounts. Tenants, tradies and property owners use their existing channels, apart from the no-login photo upload page (ADR-0002).
 
 #### Communication Management Solution Design
 Messages arrive from the agency's email, SMS and WhatsApp. Photos need verification before a ticket is created and sent to the property manager.
 
 |Feature Name|Technology Name|Usage & Cohesion|
 |---|---|---|
-|Connection to multiple channels|Twilio Programmable Messaging (SMS, WhatsApp); Twilio SendGrid Inbound Parse (email)|Every inbound message reaches the app as a webhook from one provider. The agency forwards its inbox for email. The demo uses Twilio's WhatsApp sandbox ([ADR-0003](docs/adr/0003-twilio-for-messaging-channels.md)).|
+|Connection to multiple channels|Twilio Programmable Messaging (SMS, WhatsApp); Twilio SendGrid Inbound Parse (email)|Every inbound message reaches the app as a webhook from one provider. The agency forwards its inbox for email. The demo uses Twilio's WhatsApp sandbox (ADR-0003).|
 |Sending updates|Twilio Programmable Messaging; Twilio SendGrid|Replies go on the channel the person last used within 24 hours, otherwise by SMS or email. WhatsApp messages sent first need pre-approved templates (only 3 preset ones in the sandbox).|
 |Agent replies|Fixed message templates|Predictable and cheap. Jev can't write text, so every reply the agent sends comes from a template.|
 |Sender matching|App database|Phone numbers and email addresses are matched to stored tenants, tradies and owners. Unknown senders go to the property manager's inbox.|
