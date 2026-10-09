@@ -1,0 +1,2368 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Designing an AI solution for SMB founders so decision making can be distributed within the organisation">
+      
+      
+      
+        <link rel="canonical" href="https://infs3605-wa-18a-1.github.io/CapstoneProject/designDoc/">
+      
+      
+        <link rel="prev" href="../prb-st-refinement/">
+      
+      
+        <link rel="next" href="../implementationPlan/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>Design Document - INFS3605 - Capstone Project</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#solution-design-document-v1" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="INFS3605 - Capstone Project" class="md-header__button md-logo" aria-label="INFS3605 - Capstone Project" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            INFS3605 - Capstone Project
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Design Document
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/INFS3605-WA-18A-1/CapstoneProject" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href=".." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../how-to-git/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Intro to Git & Workflows
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../market-research/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Research
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="./" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Design
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../testing/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Testing
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../implementation/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Implementation
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../contribution-logs/Kevin%27s%20Contribution/Week%202/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Contribution Logs
+
+        </a>
+      </li>
+    
+  
+
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="INFS3605 - Capstone Project" class="md-nav__button md-logo" aria-label="INFS3605 - Capstone Project" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    INFS3605 - Capstone Project
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/INFS3605-WA-18A-1/CapstoneProject" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../how-to-git/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Intro to Git & Workflows
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Research
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Research
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../market-research/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Market Research
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../prb-st-refinement/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Problem Statement Refinement
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Design
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Design
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Design Document
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Design Document
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-concept-and-idea-card" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Concept and idea card
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-persona-and-user-stories" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Persona and user stories
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-user-flow" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. User flow
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-prioritised-feature-list" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Prioritised feature list
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-data-and-logic" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Data and logic
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-platform-shortlist" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. Platform shortlist
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#peer-check" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Peer check
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../implementationPlan/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Implementation Plan
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Testing
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Testing
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../testing/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    UAT Testing
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../impact-report/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Impact Delivery Report
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Implementation
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Implementation
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../implementation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Implementation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../implementation-report/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Implementation Report
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Contribution Logs
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Contribution Logs
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_7_1" id="__nav_7_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Kevin
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Kevin
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../contribution-logs/Kevin%27s%20Contribution/Week%202/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Week 2
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../contribution-logs/Kevin%27s%20Contribution/Week%203/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Week 3
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_7_2" id="__nav_7_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    John
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    John
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../contribution-logs/John%27s%20Contribution/Week%202/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Week 2
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../contribution-logs/John%27s%20Contribution/Week%203/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Week 3
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_7_3" id="__nav_7_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Ho Nam
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Ho Nam
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../contribution-logs/Ho%20Nam%27s%20Contribution/Week%202/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Week 2
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../contribution-logs/Ho%20Nam%27s%20Contribution/Week%203/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Week 3
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_7_4" id="__nav_7_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lena
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Lena
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../contribution-logs/Lena%27s%20Contribution/Week%202/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Week 2
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../contribution-logs/Lena%27s%20Contribution/Week%203/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Week 3
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_7_5" id="__nav_7_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Sophia
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Sophia
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../contribution-logs/Sophia%27s%20Contribution/Week%202/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Week 2
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../contribution-logs/Sophia%27s%20Contribution/Week%203/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Week 3
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-concept-and-idea-card" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Concept and idea card
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-persona-and-user-stories" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Persona and user stories
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-user-flow" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. User flow
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-prioritised-feature-list" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Prioritised feature list
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-data-and-logic" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Data and logic
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-platform-shortlist" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. Platform shortlist
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#peer-check" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Peer check
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="solution-design-document-v1">Solution Design Document v1<a class="headerlink" href="#solution-design-document-v1" title="Permanent link">&para;</a></h1>
+<p><strong>Team:</strong> W18A-1  ·  <strong>Seminar:</strong> Wed 6 pm</p>
+<p><strong>Members:</strong> Kevin He, John Le, Ho Nam Wong, Sophia Lu, Lena Le</p>
+<p><strong>Roles today:</strong> Facilitators John Le and Lena Le, Timekeeper Sophia Lu, Scribe Kevin He, Challenger Ho Nam Wong</p>
+<p><strong>Problem statement v1:</strong> With ageing buildings and a lack of incentives to repair, property managers spend too much time coordinating severe maintenance repairs. This affects small and individual property managers, who spend most of their time on communication and maintenance admin. This bottleneck needs to change because it limits property managers' ability to keep residents satisfied and take on more properties.</p>
+<p><strong>How Might We:</strong> How might we build a product that makes communication about maintenance and tenant requests faster and easier to manage?</p>
+<h2 id="1-concept-and-idea-card">1. Concept and idea card<a class="headerlink" href="#1-concept-and-idea-card" title="Permanent link">&para;</a></h2>
+<p><strong>Selected concept:</strong> Dashboard and ticketing system with profiles<br />
+<strong>Why:</strong> It covers all the issues in the problem statement while staying viable for user adoption.<br />
+<strong>Rejected, and why:</strong> Automated Maintenance Assignment and Communication Forwarding and Rewording were rejected as standalone products. They were too wide in scope, and development could easily run into scope creep. Their strongest parts carry over as features of the selected concept: automated tradie recommendation and automated communication.</p>
+<table>
+<thead>
+<tr>
+<th>Concept</th>
+<th>Desirable</th>
+<th>Feasible</th>
+<th>Viable</th>
+<th>Total</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Dashboard and ticketing system with profiles</td>
+<td>3</td>
+<td>3</td>
+<td>2</td>
+<td>8</td>
+</tr>
+<tr>
+<td>Automated Maintenance Assignment</td>
+<td>2</td>
+<td>2</td>
+<td>2</td>
+<td>6</td>
+</tr>
+<tr>
+<td>Communication Forwarding and Rewording</td>
+<td>3</td>
+<td>2</td>
+<td>1</td>
+<td>6</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Headline:</strong> myEST8<br />
+<strong>Description:</strong> A ticket ingestion and prioritisation platform for small property management agencies. Tenants report issues on the channels they already use: email, SMS or WhatsApp. An AI agent sorts each message, asks for photos through an upload link, checks them, and passes the issue to a property manager to confirm as a ticket. Tickets are ranked by urgency. For each job, myEST8 recommends tradies from their ratings and past quotes; the property manager requests quotes from 3–4 of them, compares at least two, and sends a work order. Property owners only approve when costs go over the property's limit, a shared calendar stops the agency double-booking tradies, and automated updates keep tenants, tradies and owners informed on their own channels.<br />
+<strong>Problem statement:</strong> With ageing buildings and a lack of incentives to repair, property managers spend too much time coordinating severe maintenance repairs. This affects small and individual property managers, who spend most of their time on communication and maintenance admin. This bottleneck needs to change because it limits property managers' ability to keep residents satisfied and take on more properties.<br />
+<strong>Users and stakeholders:</strong> Property managers (in agencies of 3–4), property owners, tradies, tenants, building managers (for common areas)<br />
+<strong>Value:</strong> This solution matters because it frees up property managers' time to find and sign new property owners. It cuts the admin work that holds property management businesses back, and comparing at least two quotes per job helps keep maintenance costs down.<br />
+<strong>Next steps and questions:</strong>
+- Verify viability through additional interviews.
+- Security and privacy review of the photo upload links and stored photo metadata (deferred for the MVP).
+- Check the urgent repair flow against NSW rules: tenants may arrange urgent repairs themselves only if they can't reach the landlord or agent, or the repair isn't done in a reasonable time.
+- Jev has been in limited early access since 15 September 2026. Confirm our access and usage limits will last the whole build.
+- Test whether photos uploaded from phone browsers keep their metadata.</p>
+<h2 id="2-persona-and-user-stories">2. Persona and user stories<a class="headerlink" href="#2-persona-and-user-stories" title="Permanent link">&para;</a></h2>
+<p><strong>Persona:</strong> Mohammed, 42, property manager<br />
+<strong>Description:</strong> Runs a small property management business (~3 employees) and oversees about 100 properties within one suburb.<br />
+<strong>Behaviours:</strong>
+- Uses AI a lot and often seeks guidance.
+- Spends a lot of time on admin work.
+- Communicates sporadically.
+- Checks email in the morning, then only occasionally.</p>
+<p><strong>Needs and goals:</strong>
+- Needs to grow the business by finding and talking to more clients.
+- Needs to keep tenants and property owners happy so they stay.
+- Goal: grow overall revenue and manage more properties.
+- Goal: reduce costs and expenses.</p>
+<p><strong>Evidence:</strong> Questionnaire</p>
+<p><strong>Epics:</strong> Capturing the full process for tradie discovery and quoting; Understanding the communication pathways; Creating wireframes for the solution; Building the core maintenance request workflow (MVP)</p>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Epic</th>
+<th>User story</th>
+<th>Acceptance criteria</th>
+<th>Size</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Capturing the full process for tradie discovery and quoting</td>
+<td>As a developer, I want a structured breakdown of each task and the endpoints connected to it, so that I can design an end-to-end process.</td>
+<td>1 BPMN diagram and 1 design document for the process.</td>
+<td>M</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Capturing the full process for tradie discovery and quoting</td>
+<td>As the BA/Scrum Master, I want to take the requirements from this process and break them down into tickets, so that the developers have tasks that work towards impact.</td>
+<td>5 developer tickets created; 1 documentation submission.</td>
+<td>M</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Capturing the full process for tradie discovery and quoting</td>
+<td>As the Product Owner, I want a tracker that maps tickets to user requirements, so that I can monitor progress towards business impact.</td>
+<td>1 ticket progress tracker the Product Owner can view.</td>
+<td>L</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Understanding the communication pathways</td>
+<td>As a developer, I want a map of every channel tenants, tradies and property owners use to contact the property manager, so that I know which channels the intake agent must support.</td>
+<td>1 communication pathway map covering email, SMS and WhatsApp.</td>
+<td>S</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Creating wireframes for the solution</td>
+<td>As a designer, I want wireframes of the main processes, so that we can check the flow with users before building it.</td>
+<td>Process wireframes in Figma, reviewed by the team (scope TBD).</td>
+<td>M</td>
+</tr>
+<tr>
+<td>6</td>
+<td>Building the core maintenance request workflow (MVP)</td>
+<td>As a property manager, I want a guide to connect our email, SMS and WhatsApp, so that I can set myEST8 up without technical help.</td>
+<td>The guide connects all 3 channels and explains how to create any the agency doesn't have.</td>
+<td>M</td>
+</tr>
+<tr>
+<td>7</td>
+<td>Building the core maintenance request workflow (MVP)</td>
+<td>As a tenant, I want to report an issue on the channel I already use and send photos through a link, so that I don't have to download an app or create an account.</td>
+<td>Messages on email, SMS and WhatsApp reach the agent; a new issue gets an upload link; uploaded photos attach to the maintenance request.</td>
+<td>L</td>
+</tr>
+<tr>
+<td>8</td>
+<td>Building the core maintenance request workflow (MVP)</td>
+<td>As a property manager, I want each reported issue checked automatically before I confirm it, so that I only spend time on genuine issues.</td>
+<td>Each maintenance request shows its photo metadata and image-match results; confirming creates a ticket; rejecting tells the tenant why.</td>
+<td>M</td>
+</tr>
+<tr>
+<td>9</td>
+<td>Building the core maintenance request workflow (MVP)</td>
+<td>As a property manager, I want tickets ranked by urgency, so that I deal with the most severe repairs first.</td>
+<td>Every issue is ranked Urgent, High or Routine; urgent issues get the urgent repair reminder; the dashboard sorts tickets by urgency, then by submission time.</td>
+<td>M</td>
+</tr>
+<tr>
+<td>10</td>
+<td>Building the core maintenance request workflow (MVP)</td>
+<td>As a property manager, I want recommended tradies for each job and at least two quotes side by side, so that I can choose the best option in one place.</td>
+<td>3–4 recommended tradies per job; quote requests sent in one click; at least 2 quotes compared before a work order can be sent.</td>
+<td>L</td>
+</tr>
+<tr>
+<td>11</td>
+<td>Building the core maintenance request workflow (MVP)</td>
+<td>As a property owner, I want to approve repairs only when they go over my limit, so that I keep control of big costs without being asked about small jobs.</td>
+<td>Approval is requested only when the repair cost would exceed the property's max repair cost; the YES/NO reply is recorded.</td>
+<td>M</td>
+</tr>
+<tr>
+<td>12</td>
+<td>Building the core maintenance request workflow (MVP)</td>
+<td>As a property manager, I want to see when tradies are already booked by my colleagues, so that we don't double-book the same tradie.</td>
+<td>The shared calendar shows every scheduled job; new times are suggested when a tradie or tenant asks to reschedule.</td>
+<td>L</td>
+</tr>
+<tr>
+<td>13</td>
+<td>Building the core maintenance request workflow (MVP)</td>
+<td>As a property manager, I want automatic updates sent on each person's own channel, so that I don't have to relay messages myself.</td>
+<td>Updates are sent at each status change, on the channel last used within 24 hours, otherwise by SMS or email.</td>
+<td>M</td>
+</tr>
+<tr>
+<td>14</td>
+<td>Building the core maintenance request workflow (MVP)</td>
+<td>As a property manager, I want to rate each tradie after a job, so that recommendations improve over time.</td>
+<td>The property manager gives a 1–5 rating; the tenant is asked "Was it fixed properly?"; both show on the tradie's profile.</td>
+<td>S</td>
+</tr>
+</tbody>
+</table>
+<h2 id="3-user-flow">3. User flow<a class="headerlink" href="#3-user-flow" title="Permanent link">&para;</a></h2>
+<p><strong>Tenant flow:</strong>
+1. Message the agency on the channel they already use: email, SMS or WhatsApp.
+2. If the issue is urgent, receive a reminder that tenants arrange urgent repairs themselves, using the property's nominated tradies where possible, and can claim up to $1,000 back from the property owner. Send the receipt to the agency, which forwards it to the owner. The flow ends here for urgent repairs.
+3. Otherwise, answer a few guided questions from the agent and upload photos through the link it sends.
+4. Receive a confirmation when the property manager confirms the issue as a ticket, or the reason if it's rejected.
+5. Follow progress through status updates and the progress tracker.
+6. Confirm the visit time, or ask for another one.
+7. Let the tradie in, then answer "Was it fixed properly?" (1–5).</p>
+<p><strong>Property manager flow:</strong>
+1. Set up the agency in the onboarding guide: connect email, SMS and WhatsApp, then add properties (with max repair cost, tenants, owner and nominated tradies) and existing tradies (with a starting rating).
+2. Review maintenance requests with their automatic check results, and confirm or reject each one. Confirming creates a ticket, ranked by urgency on the dashboard.
+3. Check the trade proposed for the ticket's first job, and add any further jobs.
+4. For each job, choose 3–4 recommended tradies and send them quote requests.
+5. Confirm the price and time read from each quote, then choose one once at least two are in.
+6. If the repair cost would go over the property's max repair cost, wait for the owner's approval.
+7. Send the work order with a time slot when the tradie is free on the shared calendar, and accept a suggested new time if the tradie or tenant asks to move it.
+8. Rate the tradie when the job is done, and close the ticket once all its jobs are done.</p>
+<p><strong>Tradie flow:</strong>
+1. Receive a quote request by SMS, email or WhatsApp.
+2. Reply with a price and proposed time, as a message or a PDF quote.
+3. If chosen, receive a work order with the visit time, and reply to ask for a different time if needed.
+4. Do the job and reply to say it's done.</p>
+<p><strong>Property owner flow:</strong>
+1. Receive an approval request when a ticket's repair cost would go over the property's max repair cost. It shows the full repair cost.
+2. Reply YES or NO. A reminder follows after 24 hours.
+3. Receive updates as the work goes ahead.
+4. For urgent repairs the tenant arranged, receive the tenant's receipt, forwarded with the property manager copied in, and reimburse the tenant up to $1,000.</p>
+<h2 id="4-prioritised-feature-list">4. Prioritised feature list<a class="headerlink" href="#4-prioritised-feature-list" title="Permanent link">&para;</a></h2>
+<p><strong>Core features (MVP):</strong>
+1. <strong>Channel connections and onboarding guide:</strong> the agency connects its email, SMS and WhatsApp in an onboarding guide. If it doesn't have one of these channels, the guide walks the property manager through creating it.
+2. <strong>AI intake agent:</strong> reads every message on the connected channels, works out who sent it, and sorts it into a new issue, an update on an existing ticket, a common area issue, or other.
+3. <strong>Photo upload and verification:</strong> for a new issue, the agent sends the tenant an upload link by SMS or WhatsApp. Photos are checked automatically (photo metadata, and whether the image matches the description) before a property manager confirms the maintenance request, which creates the ticket.
+4. <strong>Urgency ranking:</strong> every issue is ranked Urgent, High or Routine. Urgent repairs go back to the tenant to arrange; tickets are sorted so the most severe repairs are handled first.
+5. <strong>Profiles:</strong> for properties (max repair cost, tenants, owner, nominated tradies, frequent issues), tenants and tradies (trades, ratings, quote history).
+6. <strong>Tradie recommendation:</strong> for each job, myEST8 recommends tradies based on their myEST8 and Google ratings and their previous quotes.
+7. <strong>Quote requests and comparison:</strong> the property manager sends quote requests to 3–4 recommended tradies and needs at least 2 quotes, compared side by side, before sending a work order.
+8. <strong>Owner approval:</strong> the property owner approves when a ticket's repair cost would go over the property's max repair cost.
+9. <strong>Shared calendar and scheduling:</strong> every scheduled job across the agency in one calendar, showing when each tradie is free, with suggested times when a visit needs to move.
+10. <strong>Automated updates:</strong> status updates go to tenants, tradies and owners on the right channel at each step.
+11. <strong>Ratings:</strong> after each job, the property manager rates the tradie and the tenant answers one question, which feeds the tradie's profile.
+12. <strong>Progress tracker:</strong> a visual timeline of each ticket for the tenant and the property manager.</p>
+<p>The MVP is a web app that also works in mobile browsers, built over 4 weeks.</p>
+<p><strong>Secondary features (after the 4-week MVP):</strong></p>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Feature</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>13</td>
+<td>FAQ page</td>
+<td>Answers common tenant questions.</td>
+</tr>
+<tr>
+<td>14</td>
+<td>FAQ-powered chatbot</td>
+<td>Adapts its answers from the FAQ content, cutting repeat questions to the property manager.</td>
+</tr>
+<tr>
+<td>15</td>
+<td>Tradie sign-up</td>
+<td>Tradie accounts. Valuable for many features, but the MVP keeps every tradie on their existing channels.</td>
+</tr>
+<tr>
+<td>16</td>
+<td>Tradie calendar</td>
+<td>Tradies share their own availability. Requires tradie sign-up; the shared agency calendar covers part of this in the MVP.</td>
+</tr>
+<tr>
+<td>17</td>
+<td>Direct tenant–tradie connection</td>
+<td>Tenants and tradies coordinate visits directly.</td>
+</tr>
+<tr>
+<td>18</td>
+<td>Tenant check-ins</td>
+<td>The platform checks in on tenants periodically.</td>
+</tr>
+<tr>
+<td>19</td>
+<td>Regular tenant checks</td>
+<td>Tenants upload images and do regular checks to catch issues early.</td>
+</tr>
+<tr>
+<td>20</td>
+<td>Weekly quests and tenant score</td>
+<td>Small weekly tasks for tenants. The tenant score counts only verified tenant-caused damage and recorded lease breaches, never message volume, and stays inside the agency.</td>
+</tr>
+<tr>
+<td>21</td>
+<td>Voice communication</td>
+<td>Tenants can report and discuss issues by voice.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="5-data-and-logic">5. Data and logic<a class="headerlink" href="#5-data-and-logic" title="Permanent link">&para;</a></h2>
+<p><strong>Collected:</strong>
+- From tenants: messages on email, SMS or WhatsApp, photos through the upload link (with any metadata), answers to the agent's guided questions, and a 1–5 answer to "Was it fixed properly?" after each job.
+- From tradies: quotes (price and proposed time) as free-text replies or PDFs, requests to change a visit time, and confirmation that a job is done.
+- From property owners: YES/NO replies to approval requests.
+- From property managers: channel connections, profile details, confirmations of maintenance requests, quote and work order decisions, and a 1–5 tradie rating after each job.
+- From Google: each tradie's overall Google rating, where they have a listing.</p>
+<p><strong>Stored:</strong>
+- <strong>Property profiles:</strong> address, property owner, current tenants, max repair cost, nominated tradies, building manager contact (strata properties), frequent issues and ticket history.
+- <strong>Tenant profiles:</strong> contact details, channels used, ticket history.
+- <strong>Tradie profiles:</strong> contact details, trades, myEST8 rating, Google rating, quote history, scheduled jobs.
+- <strong>Maintenance requests and tickets:</strong> description, photos, check results, urgency, status, jobs, and a log of every message.
+- <strong>Jobs:</strong> trade, quote requests, quotes, work order, scheduled time.</p>
+<p><strong>Presented:</strong>
+- <strong>Property manager dashboard:</strong> maintenance requests and their check results waiting for confirmation; tickets ranked by urgency; recommended tradies for each job; a side-by-side quote comparison; the shared calendar; the progress tracker; and an inbox for "other" and unknown-sender messages.
+- <strong>Tenant:</strong> replies and status updates on their own channel, the photo upload page and the progress tracker.
+- <strong>Tradie:</strong> quote requests, work orders and visit times on their own channel.
+- <strong>Property owner:</strong> approval requests showing the full repair cost, and updates on their own channel.</p>
+<p><strong>Logic rules:</strong>
+1. <strong>Message handling:</strong> the agent matches each sender to a stored tenant, tradie or owner by phone number or email. Unknown senders go to the property manager's inbox; linking one to a person saves the number for next time. The message is then sorted:
+    - <strong>New issue:</strong> goes through verification (rule 2).
+    - <strong>Update on an existing ticket:</strong> attached to that ticket, including duplicate reports from housemates.
+    - <strong>Common area issue:</strong> forwarded to the building manager, and the tenant is told it has been passed on.
+    - <strong>Other:</strong> goes to the property manager's inbox untouched.
+2. <strong>Verification:</strong> the agent asks a few guided questions and sends an upload link by SMS or WhatsApp. Each photo gets two automatic checks: its metadata, which is flagged only if it contradicts the report (taken before the tenancy began or well before the report, or far from the property; missing metadata doesn't count against it), and whether the image matches the description. The issue is then a maintenance request. A property manager confirms it, which creates the ticket, or rejects it, and the tenant is told why.
+3. <strong>Urgency:</strong> each issue is ranked Urgent, High or Routine. Anything threatening safety, the structure, security or an essential service (e.g. gas leak, flooding, dangerous electrical fault, no hot water) is Urgent: the agent reminds the tenant that they arrange urgent repairs themselves, using the property's nominated tradies where possible, and can claim up to $1,000 back from the property owner. When the tenant sends the receipt, it's forwarded to the owner with the property manager copied in as a third party. Damage that will worsen if left (e.g. a slow leak) is High; everything else is Routine. Tickets are sorted by urgency, then by submission time.
+4. <strong>Trades:</strong> the trade for the ticket's first job is proposed automatically from a fixed list (plumbing, electrical, carpentry, roofing, appliances, locksmith, pest control, general handyman). The property manager can change it and add more jobs.
+5. <strong>Tradie recommendation:</strong> for each job, recommend tradies with that trade, ranked by their myEST8 rating, Google rating and previous quotes. The two ratings are shown side by side, not combined. A tradie who isn't on Google keeps the starting rating the property manager gave them.
+6. <strong>Quotes:</strong> the property manager sends quote requests to 3–4 recommended tradies. The agent reads the price and proposed time from each reply, and the property manager confirms them. Tradies who don't reply get a reminder after 48 hours; after 72 hours the property manager is prompted to invite more. At least 2 quotes are needed before a work order, unless the property manager records a reason for going ahead with one.
+7. <strong>Owner approval:</strong> if approving a quote would take the ticket's repair cost over the property's max repair cost, the property owner must approve that quote. The request shows the full repair cost, and the owner replies YES or NO. The owner gets a reminder after 24 hours, and the property manager is alerted after 48. Quotes already approved stay approved.
+8. <strong>Work orders and scheduling:</strong> the property manager sends a work order with a time slot (2 hours by default, adjustable) when the tradie is free in the shared calendar. The agent sends the slot to the tradie and the tenant, and either can ask for another time. Suggested new times are free for the tradie and fit the availability the tenant gave.
+9. <strong>Choosing the channel:</strong> within 24 hours of a person's last message, reply on the channel they used. Otherwise send by SMS, or by email if there's no mobile number.
+10. <strong>Ratings:</strong> when a job is done, the property manager rates the tradie 1–5 and the tenant is asked "Was it fixed properly?" (1–5). Both feed the tradie's myEST8 rating used in rule 5.</p>
+<h2 id="6-platform-shortlist">6. Platform shortlist<a class="headerlink" href="#6-platform-shortlist" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Platform</th>
+<th>Handles well</th>
+<th>Trade-off</th>
+<th>Our skill (1–3)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>GitHub</td>
+<td>Repository hosting and change tracking</td>
+<td>Merge conflicts, and a learning curve for anyone new to Git</td>
+<td>2</td>
+</tr>
+<tr>
+<td>VS Code</td>
+<td>Code editing, extensions and built-in Git integration</td>
+<td>Only an editor: hosting and deployment need other tools</td>
+<td><em>TBC</em></td>
+</tr>
+<tr>
+<td>Figma</td>
+<td>Process wireframes</td>
+<td>Wireframes only; prototypes aren't functional</td>
+<td><em>TBC</em></td>
+</tr>
+<tr>
+<td>Canva</td>
+<td>Quick visuals and presentation slides</td>
+<td>Limited for interactive wireframes</td>
+<td><em>TBC</em></td>
+</tr>
+<tr>
+<td>Twilio</td>
+<td>SMS, WhatsApp and (through SendGrid) inbound email from one provider</td>
+<td>The WhatsApp sandbox only allows 3 preset templates for messages we send first; real WhatsApp numbers need Meta verification</td>
+<td><em>TBC</em></td>
+</tr>
+<tr>
+<td>Jev (TypeSafe AI)</td>
+<td>Fast, typed classification decisions: message type, urgency, trade</td>
+<td>Text and JSON input only, can't write replies, limited early access</td>
+<td><em>TBC</em></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Preferred:</strong> One web app that works in mobile browsers, built with GitHub and VS Code, using Twilio for the messaging channels and Jev for classification. Figma is used only for process wireframes (TBD).<br />
+<strong>Reason:</strong> Twilio covers all three channels with one integration. Jev returns typed decisions quickly and cheaply, which suits sorting every incoming message. A single app with internal modules keeps a 4-week build manageable for a team of 5.</p>
+<h2 id="peer-check">Peer check<a class="headerlink" href="#peer-check" title="Permanent link">&para;</a></h2>
+<p><strong>Strength we received:</strong> <em>To be completed after the peer review session</em><br />
+<strong>Question we received:</strong> <em>To be completed after the peer review session</em></p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../prb-st-refinement/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Problem Statement Refinement">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                Problem Statement Refinement
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../implementationPlan/" class="md-footer__link md-footer__link--next" aria-label="Next: Implementation Plan">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                Implementation Plan
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.tabs", "navigation.sections", "navigation.indexes", "navigation.footer", "navigation.tracking", "navigation.top", "content.code.copy"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+    
+  </body>
+</html>

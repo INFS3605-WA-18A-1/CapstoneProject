@@ -1,0 +1,74 @@
+/* ------------------------------------------------------------------
+   Landing page (docs/index.md -> overrides/home.html)
+   Adapted from Material for MkDocs' own home page styles.
+   Page-level hiding of sidebars/content is inline in overrides/home.html.
+   ------------------------------------------------------------------ */
+
+/* Full-width gradient band that continues from the header colour */
+.mdx-container {
+  padding-top: 1rem;
+  background:
+    url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1123 258'><path d='M1124,2c0,0 0,256 0,256l-1125,0l0,-48c0,0 16,5 55,5c116,0 197,-92 325,-92c121,0 114,46 254,46c140,0 214,-167 572,-166Z' style='fill: %23ffffff' /></svg>")
+      no-repeat bottom,
+    linear-gradient(to bottom, var(--md-primary-fg-color), #a63fd9 99%, var(--md-default-bg-color) 99%);
+}
+
+[data-md-color-scheme="slate"] .mdx-container {
+  background:
+    url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1123 258'><path d='M1124,2c0,0 0,256 0,256l-1125,0l0,-48c0,0 16,5 55,5c116,0 197,-92 325,-92c121,0 114,46 254,46c140,0 214,-167 572,-166Z' style='fill: %231e2129' /></svg>")
+      no-repeat bottom,
+    linear-gradient(to bottom, var(--md-primary-fg-color), #2e1a47 99%, var(--md-default-bg-color) 99%);
+}
+
+/* Hero text block */
+.mdx-hero {
+  margin: 0 0.8rem;
+  padding-bottom: 6rem;
+  color: var(--md-primary-bg-color);
+}
+
+.mdx-hero h1 {
+  margin-bottom: 1rem;
+  color: currentcolor;
+  font-weight: 700;
+}
+
+.mdx-hero__content {
+  padding-bottom: 6rem;
+}
+
+.mdx-hero .md-button {
+  margin-top: 0.5rem;
+  margin-right: 0.5rem;
+  color: var(--md-primary-bg-color);
+}
+
+.mdx-hero .md-button:focus,
+.mdx-hero .md-button:hover {
+  color: var(--md-accent-bg-color);
+  background-color: var(--md-accent-fg-color);
+  border-color: var(--md-accent-fg-color);
+}
+
+.mdx-hero .md-button--primary {
+  color: var(--md-primary-fg-color);
+  background-color: var(--md-primary-bg-color);
+  border-color: var(--md-primary-bg-color);
+}
+
+/* Wider screens: larger headline, constrained text width */
+@media screen and (min-width: 60em) {
+  .mdx-hero {
+    padding-top: 2rem;
+  }
+
+  .mdx-hero h1 {
+    font-size: 2.6rem;
+    line-height: 1.2;
+  }
+
+  .mdx-hero__content {
+    max-width: 30rem;
+    padding-bottom: 14vw;
+  }
+}
