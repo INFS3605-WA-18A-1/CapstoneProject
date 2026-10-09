@@ -43,8 +43,8 @@ nav:
       - Market Research: market-research.md
       - Problem Statement Refinement: prb-st-refinement.md
   - Design:
-      - Design: design.md
-      - Design Report: design-report.md
+      - Design Document: designDoc.md
+      - Implementation Plan: implementationPlan.md
   - Testing:
       - UAT Testing: testing.md
       - Impact Delivery Report: impact-report.md
