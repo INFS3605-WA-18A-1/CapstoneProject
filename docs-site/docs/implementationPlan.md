@@ -1,7 +1,7 @@
 # Implementation Document V1
 
 ## Feature Description and Technology Usage
-This section covers the core and secondary features and the technologies used to implement them. The MVP is a single web app that also works in mobile browsers, built over 4 weeks. Domain terms such as maintenance request, ticket, job and max repair cost are defined in CONTEXT.md, and the key decisions are recorded in `docs/adr/`.
+This section covers the core and secondary features and the technologies used to implement them. The MVP is a single web app that also works in mobile browsers, built over 4 weeks. Domain terms such as maintenance request, ticket, job and max repair cost are defined in [CONTEXT.md](https://github.com/SweetTooth05/myEST8/blob/master/CONTEXT.md), and the key decisions are recorded in [docs/adr/](https://github.com/SweetTooth05/myEST8/tree/master/docs/adr/).
 
 ### Feature List
 **Core features (MVP):**
@@ -61,9 +61,9 @@ This section covers the core and secondary features and the technologies used to
     - **Common area issue:** forwarded to the building manager, and the tenant is told it has been passed on.
     - **Other:** goes to the property manager's inbox untouched.
 2. **Verification:** the agent asks a few guided questions and sends an upload link by SMS or WhatsApp. Each photo gets two automatic checks: its metadata, which is flagged only if it contradicts the report (taken before the tenancy began or well before the report, or far from the property; missing metadata doesn't count against it), and whether the image matches the description. The issue is then a maintenance request. A property manager confirms it, which creates the ticket, or rejects it, and the tenant is told why.
-3. **Urgency:** each issue is ranked Urgent, High or Routine. Anything threatening safety, the structure, security or an essential service (e.g. gas leak, flooding, dangerous electrical fault, no hot water) is Urgent: the agent reminds the tenant that they arrange urgent repairs themselves, using the property's nominated tradies where possible, and can claim up to $1,000 back from the property owner. When the tenant sends the receipt, it's forwarded to the owner with the property manager copied in as a third party. Damage that will worsen if left (e.g. a slow leak) is High; everything else is Routine. Tickets are sorted by urgency, then by submission time.
+3. **Urgency:** each issue is ranked Urgent, High or Routine. Anything threatening safety, the structure, security or an essential service (e.g. gas leak, flooding, dangerous electrical fault, no hot water) is Urgent: the agent reminds the tenant that they arrange urgent repairs themselves, using the property's nominated tradies where possible, and can claim up to $1,000 back from the property owner. When the tenant sends the receipt, it becomes a Reimbursement Request: the property manager checks it and forwards it to the owner (copied in as a third party), then marks it reimbursed once the owner has paid. Damage that will worsen if left (e.g. a slow leak) is High; everything else is Routine. Tickets are sorted by urgency, then by submission time.
 4. **Trades:** the trade for the ticket's first job is proposed automatically from a fixed list (plumbing, electrical, carpentry, roofing, appliances, locksmith, pest control, general handyman). The property manager can change it and add more jobs.
-5. **Tradie recommendation:** for each job, recommend tradies with that trade, ranked by their myEST8 rating, Google rating and previous quotes. The two ratings are shown side by side, not combined. A tradie who isn't on Google keeps the starting rating the property manager gave them.
+5. **Tradie recommendation:** for each job, recommend tradies with that trade: nominated tradies first, then ranked by a weighted blend of their myEST8 rating, Google rating, job fit (how closely their past work matches this job, judged by Jev) and previous quotes. The ratings and job fit are shown side by side, not combined. A tradie who isn't on Google keeps the starting rating the property manager gave them.
 6. **Quotes:** the property manager sends quote requests to 3–4 recommended tradies. The agent reads the price and proposed time from each reply, and the property manager confirms them. Tradies who don't reply get a reminder after 48 hours; after 72 hours the property manager is prompted to invite more. At least 2 quotes are needed before a work order, unless the property manager records a reason for going ahead with one.
 7. **Owner approval:** if approving a quote would take the ticket's repair cost over the property's max repair cost, the property owner must approve that quote. The request shows the full repair cost, and the owner replies YES or NO. The owner gets a reminder after 24 hours, and the property manager is alerted after 48. Quotes already approved stay approved.
 8. **Work orders and scheduling:** the property manager sends a work order with a time slot (2 hours by default, adjustable) when the tradie is free in the shared calendar. The agent sends the slot to the tradie and the tenant, and either can ask for another time. Suggested new times are free for the tradie and fit the availability the tenant gave.
@@ -72,18 +72,18 @@ This section covers the core and secondary features and the technologies used to
 
 ***
 ### Technology Implementation
-The product has four main areas: communication management, classification, tradie recommendation, and scheduling and approvals. They're built as one app with internal modules (intake agent, tickets, quotes, scheduling, notifications), with the AI agent running as a background worker inside it, rather than as separate microservices. A team of 5 can't deploy and connect several services in 4 weeks, and module boundaries give the same separation (ADR-0001).
+The product has four main areas: communication management, classification, tradie recommendation, and scheduling and approvals. They're built as one app with internal modules (intake agent, tickets, quotes, scheduling, notifications), with the AI agent running as a background worker inside it, rather than as separate microservices. A team of 5 can't deploy and connect several services in 4 weeks, and module boundaries give the same separation ([ADR-0001](https://github.com/SweetTooth05/myEST8/blob/master/docs/adr/0001-single-app-with-internal-modules.md)).
 
-Only property managers have accounts. Tenants, tradies and property owners use their existing channels, apart from the no-login photo upload page (ADR-0002).
+Only property managers have accounts. Tenants, tradies and property owners use their existing channels, apart from the no-login photo upload page ([ADR-0002](https://github.com/SweetTooth05/myEST8/blob/master/docs/adr/0002-only-property-managers-have-accounts.md)).
 
 #### Communication Management Solution Design
 Messages arrive from the agency's email, SMS and WhatsApp. Photos need verification before a ticket is created and sent to the property manager.
 
 |Feature Name|Technology Name|Usage & Cohesion|
 |---|---|---|
-|Connection to multiple channels|Twilio Programmable Messaging (SMS, WhatsApp); Twilio SendGrid Inbound Parse (email)|Every inbound message reaches the app as a webhook from one provider. The agency forwards its inbox for email. The demo uses Twilio's WhatsApp sandbox (ADR-0003).|
+|Connection to multiple channels|Twilio Programmable Messaging (SMS, WhatsApp); Twilio SendGrid Inbound Parse (email)|Every inbound message reaches the app as a webhook from one provider. The agency forwards its inbox for email. The demo uses Twilio's WhatsApp sandbox ([ADR-0003](https://github.com/SweetTooth05/myEST8/blob/master/docs/adr/0003-twilio-for-messaging-channels.md)).|
 |Sending updates|Twilio Programmable Messaging; Twilio SendGrid|Replies go on the channel the person last used within 24 hours, otherwise by SMS or email. WhatsApp messages sent first need pre-approved templates (only 3 preset ones in the sandbox).|
-|Agent replies|Fixed message templates|Predictable and cheap. Jev can't write text, so every reply the agent sends comes from a template.|
+|Agent replies and outbound messages|Claude Haiku, with fixed templates as the fallback|Haiku composes each email from the facts of the action, for example the email when a property manager forwards a ticket to the property owner. It adds no facts, and code checks that amounts, dates, links, phone numbers and buttons appear. If Haiku is down or its draft misses a fact, the template goes out instead. SMS and WhatsApp messages stay their templates. Jev classifies but can't write text ([ADR 0011](https://github.com/SweetTooth05/myEST8/blob/master/docs/adr/0011-jev-classifies-haiku-composes.md)).|
 |Sender matching|App database|Phone numbers and email addresses are matched to stored tenants, tradies and owners. Unknown senders go to the property manager's inbox.|
 |Photo upload|Upload page in the web app, linked by SMS or WhatsApp|No login. Gets photos past WhatsApp and MMS compression, which strips metadata.|
 |Photo metadata check|EXIF reader library (chosen with the stack)|Flags only contradictions: taken before the tenancy began or well before the report, or far from the property.|
@@ -116,9 +116,12 @@ Our app structures each request to Jev: the message (with the ticket's context) 
 |Progress tracker|Web app|A timeline built from ticket and job statuses, for the property manager and, through a link, the tenant.|
 
 #### Open decisions
-- Web framework, database and hosting.
-- Which vision-capable LLM checks photos.
-- Which model reads prices and times from tradie replies and PDF quotes.
+- Web framework, database and hosting. **Resolved:** Hono (TypeScript) with Postgres on Supabase, hosted on Vercel.
+- Which vision-capable LLM checks photos. **Still open:** built against a gateway contract, and the property manager confirms every result.
+- Which model reads prices and times from tradie replies and PDF quotes. **Partly resolved:** tradies enter Estimates and Firm Quotes on a no-login quote page. The model for free-text and PDF replies is still behind a gateway contract.
+
+!!! note "As built"
+    This plan was written before the build. Messaging moved from Twilio to textbee (SMS), Resend (email) and Meta's WhatsApp Cloud API. Quoting grew into Estimate → optional Site Inspection → Firm Quote, and Claude Haiku now composes emails. See [Implementation](implementation.md) for the delivered system and the [Implementation Report](implementation-report.md) for why each change was made.
 
 #### Notes for later
 - Security review of the no-login photo upload links.
