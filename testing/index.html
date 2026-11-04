@@ -1,0 +1,2697 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Designing an AI solution for SMB founders so decision making can be distributed within the organisation">
+      
+      
+      
+        <link rel="canonical" href="https://infs3605-wa-18a-1.github.io/CapstoneProject/testing/">
+      
+      
+        <link rel="prev" href="../implementationPlan/">
+      
+      
+        <link rel="next" href="../impact-report/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>UAT Testing - INFS3605 - Capstone Project</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#uat-testing" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="INFS3605 - Capstone Project" class="md-header__button md-logo" aria-label="INFS3605 - Capstone Project" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            INFS3605 - Capstone Project
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              UAT Testing
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/INFS3605-WA-18A-1/CapstoneProject" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href=".." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../how-to-git/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Intro to Git & Workflows
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../market-research/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Research
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../designDoc/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Design
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="./" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Testing
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../implementation/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Implementation
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../contribution-logs/Kevin%27s%20Contribution/Week%202/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Contribution Logs
+
+        </a>
+      </li>
+    
+  
+
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="INFS3605 - Capstone Project" class="md-nav__button md-logo" aria-label="INFS3605 - Capstone Project" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    INFS3605 - Capstone Project
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/INFS3605-WA-18A-1/CapstoneProject" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../how-to-git/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Intro to Git & Workflows
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Research
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Research
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../market-research/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Market Research
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../prb-st-refinement/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Problem Statement Refinement
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Design
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Design
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../designDoc/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Design Document
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../implementationPlan/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Implementation Plan
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Testing
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Testing
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    UAT Testing
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    UAT Testing
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#test-plan" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Test plan
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Test plan">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#entry-and-exit-criteria" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Entry and exit criteria
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#severity-and-status-definitions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Severity and status definitions
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#test-scenarios" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Test scenarios
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#feedback-questionnaire" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Feedback questionnaire
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#results" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Results
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Results">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#exit-criteria" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Exit criteria
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#defect-log" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Defect log
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#key-feedback-themes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Key feedback themes
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sign-off" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Sign-off
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#automated-testing-before-uat" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Automated testing before UAT
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../impact-report/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Impact Delivery Report
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Implementation
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Implementation
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../implementation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Implementation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../implementation-report/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Implementation Report
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Contribution Logs
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Contribution Logs
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_7_1" id="__nav_7_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Kevin
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Kevin
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../contribution-logs/Kevin%27s%20Contribution/Week%202/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Week 2
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../contribution-logs/Kevin%27s%20Contribution/Week%203/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Week 3
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_7_2" id="__nav_7_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    John
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    John
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../contribution-logs/John%27s%20Contribution/Week%202/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Week 2
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../contribution-logs/John%27s%20Contribution/Week%203/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Week 3
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_7_3" id="__nav_7_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Ho Nam
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Ho Nam
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../contribution-logs/Ho%20Nam%27s%20Contribution/Week%202/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Week 2
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../contribution-logs/Ho%20Nam%27s%20Contribution/Week%203/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Week 3
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_7_4" id="__nav_7_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lena
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Lena
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../contribution-logs/Lena%27s%20Contribution/Week%202/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Week 2
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../contribution-logs/Lena%27s%20Contribution/Week%203/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Week 3
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../contribution-logs/Lena%27s%20Contribution/Week%205/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Week 5
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_7_5" id="__nav_7_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Sophia
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Sophia
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../contribution-logs/Sophia%27s%20Contribution/Week%202/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Week 2
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../contribution-logs/Sophia%27s%20Contribution/Week%203/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Week 3
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../contribution-logs/Sophia%27s%20Contribution/Week%204/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Week 4
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#test-plan" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Test plan
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Test plan">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#entry-and-exit-criteria" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Entry and exit criteria
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#severity-and-status-definitions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Severity and status definitions
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#test-scenarios" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Test scenarios
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#feedback-questionnaire" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Feedback questionnaire
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#results" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Results
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Results">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#exit-criteria" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Exit criteria
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#defect-log" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Defect log
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#key-feedback-themes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Key feedback themes
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sign-off" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Sign-off
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#automated-testing-before-uat" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Automated testing before UAT
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="uat-testing">UAT Testing<a class="headerlink" href="#uat-testing" title="Permanent link">&para;</a></h1>
+<p>User Acceptance Testing (UAT) checks with real Property Managers whether myEST8 supports how a small Sydney Agency actually handles maintenance, whether its wording makes sense, and whether anything important is missing before the final presentation.</p>
+<div class="admonition info">
+<p class="admonition-title">Status: planned. Sessions run 5–9 November 2026.</p>
+<p>The test plan and scenarios below are final. The <strong>Results</strong> section is filled in from the UAT pack (<code>myEST8_UAT_Pack.xlsx</code>) after the sessions.</p>
+</div>
+<h2 id="test-plan">Test plan<a class="headerlink" href="#test-plan" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Item</th>
+<th>Detail</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Objective</strong></td>
+<td>Validate that a Property Manager at a small Agency can run the full maintenance workflow in myEST8, from a Tenant's first message to a finished Job, and that the product fits their day-to-day work.</td>
+</tr>
+<tr>
+<td><strong>Where</strong></td>
+<td><a href="https://myest8.vercel.app">https://myest8.vercel.app</a>, the current production build from <code>master</code>. Desktop browser (Chrome, Edge or Safari) at 1366–1440 px, plus the tester's own phone for one scenario.</td>
+</tr>
+<tr>
+<td><strong>When</strong></td>
+<td>Thursday 5 and Friday 6 November, the weekend of 7–8 November, and Monday 9 November as a fallback. In person or over Zoom/Teams, about 50 minutes each.</td>
+</tr>
+<tr>
+<td><strong>Who</strong></td>
+<td><strong>Tester:</strong> a practising Property Manager at a small Agency. <strong>Facilitator:</strong> runs the session and plays the Tenant, Tradie and Property Owner from test phones and inboxes. <strong>Note-taker:</strong> fills in the UAT pack live. <strong>Product owner:</strong> triages defects and signs off.</td>
+</tr>
+<tr>
+<td><strong>In scope</strong></td>
+<td>Sign-up and onboarding; adding Properties, Tenants, Owners and Tradies (one by one and by import); Tenant reporting by SMS and email; follow-up questions and photo upload; the AI-filled Summary, Trade and Urgency; confirming a Maintenance Request; Urgent Repairs; Quote Requests, Estimates, Site Inspections and Firm Quotes; Owner approval; Work Orders and visit booking; the Tenant progress page; Dashboard, Dispatch, Tickets, Archive, Approvals, Schedule, Profiles and Settings.</td>
+</tr>
+<tr>
+<td><strong>Out of scope</strong></td>
+<td>Billing, trust accounting and rent; PropertyMe or Console Cloud integration; load and security testing; native apps; per-Agency WhatsApp numbers; Common Area repairs beyond passing them to the Building Manager.</td>
+</tr>
+<tr>
+<td><strong>Test data</strong></td>
+<td>Agency "Harbourside Rentals (UAT)". Properties 12 King St, Newtown (Max Repair Cost $500) and 4/18 Wattle St, Ultimo ($300). Tenant Priya Shah, Owner Daniel Ng, Tradies Drip Doctors, Flow Bros Plumbing (Nominated for King St) and Sparkright Electrical. <strong>All made up.</strong> No tester's own tenants, owners or tradies are ever contacted.</td>
+</tr>
+<tr>
+<td><strong>Session outline</strong></td>
+<td>5 min welcome and consent → 35 min scenarios, thinking aloud → 5 min SUS questionnaire and open questions → 5 min wrap-up</td>
+</tr>
+</tbody>
+</table>
+<h3 id="entry-and-exit-criteria">Entry and exit criteria<a class="headerlink" href="#entry-and-exit-criteria" title="Permanent link">&para;</a></h3>
+<p><strong>Entry:</strong> the production deploy is green (CI <code>deploy-prod</code> and <code>smoke</code> passed); the test Agency, phones and inboxes are ready; the tester has read the information sheet and consented.</p>
+<p><strong>Exit (all must be met to accept):</strong></p>
+<ol>
+<li>Every High-priority scenario has been run by at least 3 testers.</li>
+<li>No open Critical defects.</li>
+<li>No more than 2 open High defects, each with a planned fix.</li>
+<li>Average System Usability Scale (SUS) score of <strong>68 or more</strong>, the commonly cited industry average (Brooke 1996; Sauro 2011).</li>
+<li>The team has reviewed all feedback.</li>
+</ol>
+<h3 id="severity-and-status-definitions">Severity and status definitions<a class="headerlink" href="#severity-and-status-definitions" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Severity</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Critical</td>
+<td>Data loss, the wrong person contacted, or the flow can't continue</td>
+</tr>
+<tr>
+<td>High</td>
+<td>A main task is wrong or confusing with no workaround</td>
+</tr>
+<tr>
+<td>Medium</td>
+<td>Wrong or confusing, but there is a workaround</td>
+</tr>
+<tr>
+<td>Low</td>
+<td>Cosmetic, wording or layout</td>
+</tr>
+</tbody>
+</table>
+<p>Status values: <strong>Pass</strong> (behaved as expected), <strong>Fail</strong> (didn't; log a defect), <strong>Blocked</strong> (couldn't be run because of an earlier failure or missing setup), <strong>Not run</strong>.</p>
+<p><strong>Defect handling:</strong> each failure gets one row in the defect log, linked to its scenario. The team triages daily during the UAT window. Fixes go through the normal PR into <code>dev</code>, then a release to <code>master</code>, and are retested in the next session.</p>
+<h2 id="test-scenarios">Test scenarios<a class="headerlink" href="#test-scenarios" title="Permanent link">&para;</a></h2>
+<p>The scenarios run in order, and each builds on the one before. 32 scenarios: 19 High, 12 Medium and 1 Low priority.</p>
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>Area</th>
+<th>Scenario</th>
+<th>Played by</th>
+<th>Expected result</th>
+<th>Priority</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>UAT-01</td>
+<td>Onboarding</td>
+<td>Create an Agency account</td>
+<td>Property Manager</td>
+<td>The landing page explains myEST8 within seconds. Sign-up lands on "Welcome to myEST8" with the setup steps.</td>
+<td>High</td>
+</tr>
+<tr>
+<td>UAT-02</td>
+<td>Onboarding</td>
+<td>Sign out and sign back in</td>
+<td>Property Manager</td>
+<td>Correct details reach the Dashboard. A wrong password shows a clear error without revealing whether the email exists.</td>
+<td>High</td>
+</tr>
+<tr>
+<td>UAT-03</td>
+<td>Onboarding</td>
+<td>Invite a second Property Manager</td>
+<td>Property Manager</td>
+<td>The colleague appears in Your team, and Tradies are shared across the Agency.</td>
+<td>Medium</td>
+</tr>
+<tr>
+<td>UAT-04</td>
+<td>Onboarding</td>
+<td>Set up the SMS and email channels</td>
+<td>Property Manager</td>
+<td>It's clear which number and email Tenants contact, and what each channel needs.</td>
+<td>High</td>
+</tr>
+<tr>
+<td>UAT-05</td>
+<td>Records</td>
+<td>Add a Property with its Owner and Max Repair Cost</td>
+<td>Property Manager</td>
+<td>The address autocompletes and is pinned on the map. The Property shows its Owner and $500 limit.</td>
+<td>High</td>
+</tr>
+<tr>
+<td>UAT-06</td>
+<td>Records</td>
+<td>Add a Tenant to the Property</td>
+<td>Property Manager</td>
+<td>Priya appears on the Property and in Profiles, and her mobile and email now reach the Agency as her.</td>
+<td>High</td>
+</tr>
+<tr>
+<td>UAT-07</td>
+<td>Records</td>
+<td>Add Tradies and a Nominated Tradie</td>
+<td>Property Manager</td>
+<td>Each Tradie shows its Trade, and Flow Bros is the Nominated Tradie for King St.</td>
+<td>High</td>
+</tr>
+<tr>
+<td>UAT-08</td>
+<td>Records</td>
+<td>Import Properties from a spreadsheet</td>
+<td>Property Manager</td>
+<td>Columns are matched, problems are flagged per row, and only the valid ticked rows are added.</td>
+<td>Medium</td>
+</tr>
+<tr>
+<td>UAT-09</td>
+<td>Intake</td>
+<td>Tenant reports a leak by SMS</td>
+<td>Tenant</td>
+<td>Priya gets "A few quick questions" with no action from the Property Manager.</td>
+<td>High</td>
+</tr>
+<tr>
+<td>UAT-10</td>
+<td>Intake</td>
+<td>Tenant answers and uploads a photo</td>
+<td>Tenant</td>
+<td>The upload link works on a phone, and the photo is checked and attached.</td>
+<td>High</td>
+</tr>
+<tr>
+<td>UAT-11</td>
+<td>Intake</td>
+<td>Review the AI-filled Maintenance Request</td>
+<td>Property Manager</td>
+<td>Sensible Summary, Trade = Plumbing, Urgency = High, photo attached, marked "Filled in by AI". The tester rates whether it is trustworthy.</td>
+<td>High</td>
+</tr>
+<tr>
+<td>UAT-12</td>
+<td>Intake</td>
+<td>Edit and confirm the Maintenance Request</td>
+<td>Property Manager</td>
+<td>It becomes a numbered Ticket, and Priya is texted a progress link.</td>
+<td>High</td>
+</tr>
+<tr>
+<td>UAT-13</td>
+<td>Intake</td>
+<td>Tenant reports by email instead</td>
+<td>Tenant</td>
+<td>Trade = Carpentry, Urgency = Routine, and the follow-up comes back by email.</td>
+<td>Medium</td>
+</tr>
+<tr>
+<td>UAT-14</td>
+<td>Intake</td>
+<td>Urgent Repair: no hot water</td>
+<td>Tenant</td>
+<td>Treated as an Urgent Repair: Priya is told to arrange it with Flow Bros, can claim up to $1,000, and gets a receipt link. No Ticket is created.</td>
+<td>High</td>
+</tr>
+<tr>
+<td>UAT-15</td>
+<td>Intake</td>
+<td>Message from an unknown number</td>
+<td>Tenant</td>
+<td>The message waits for the Property Manager's review, and nothing goes to a Tradie or Owner.</td>
+<td>Medium</td>
+</tr>
+<tr>
+<td>UAT-16</td>
+<td>Quotes</td>
+<td>Send Quote Requests to at least two Tradies</td>
+<td>Property Manager</td>
+<td>Up to four Plumbing Tradies are suggested, at least two must be chosen, and each Tradie gets a link.</td>
+<td>High</td>
+</tr>
+<tr>
+<td>UAT-17</td>
+<td>Quotes</td>
+<td>Tradie gives an Estimate and asks for a Site Inspection</td>
+<td>Tradie</td>
+<td>The no-login quote page works on a phone, and the Ticket shows the $180 Estimate and the inspection request.</td>
+<td>High</td>
+</tr>
+<tr>
+<td>UAT-18</td>
+<td>Quotes</td>
+<td>Book the Site Inspection</td>
+<td>Property Manager</td>
+<td>The visit is booked, and the Tenant can confirm or ask for another time.</td>
+<td>Medium</td>
+</tr>
+<tr>
+<td>UAT-19</td>
+<td>Quotes</td>
+<td>Choose a Firm Quote under the Max Repair Cost</td>
+<td>Property Manager</td>
+<td>$180 and $240 are shown side by side. Choosing $180 needs no Owner approval, and the Work Order goes out.</td>
+<td>High</td>
+</tr>
+<tr>
+<td>UAT-20</td>
+<td>Quotes</td>
+<td>Quote over the Max Repair Cost needs approval</td>
+<td>PM / Owner</td>
+<td>The Owner is asked by SMS. The Ticket shows "waiting on Owner", then approved after YES, and the Work Order goes out.</td>
+<td>High</td>
+</tr>
+<tr>
+<td>UAT-21</td>
+<td>Quotes</td>
+<td>Owner declines</td>
+<td>Owner</td>
+<td>The Ticket shows the decline and what to do next.</td>
+<td>Medium</td>
+</tr>
+<tr>
+<td>UAT-22</td>
+<td>Quotes</td>
+<td>Tradie who hasn't quoted gets a reminder</td>
+<td>Property Manager</td>
+<td>Reminded once after 48 h, and the Ticket says so.</td>
+<td>Low</td>
+</tr>
+<tr>
+<td>UAT-23</td>
+<td>Jobs</td>
+<td>Tenant picks a visit time</td>
+<td>Tenant</td>
+<td>The visit is on the Schedule, and the Tradie and Tenant are both told.</td>
+<td>High</td>
+</tr>
+<tr>
+<td>UAT-24</td>
+<td>Jobs</td>
+<td>Tradie marks the Job done; Tenant sees it</td>
+<td>Tradie / Tenant</td>
+<td>The Ticket moves to Done, the progress page shows the full timeline, and the Ticket moves to the Archive.</td>
+<td>High</td>
+</tr>
+<tr>
+<td>UAT-25</td>
+<td>Jobs</td>
+<td>Tenant sends an Urgent Repair receipt</td>
+<td>Tenant</td>
+<td>A Reimbursement Request is created for the Property Manager to check and forward.</td>
+<td>Medium</td>
+</tr>
+<tr>
+<td>UAT-26</td>
+<td>Daily work</td>
+<td>Dashboard: what needs my decision</td>
+<td>Property Manager</td>
+<td>Decisions are clearly marked, and the tester knows what to do first within a minute.</td>
+<td>High</td>
+</tr>
+<tr>
+<td>UAT-27</td>
+<td>Daily work</td>
+<td>Dispatch map</td>
+<td>Property Manager</td>
+<td>Pins match Ticket addresses and Urgency, and the list and map agree.</td>
+<td>Medium</td>
+</tr>
+<tr>
+<td>UAT-28</td>
+<td>Daily work</td>
+<td>Schedule for the week</td>
+<td>Property Manager</td>
+<td>Booked visits appear on the right day and time.</td>
+<td>Medium</td>
+</tr>
+<tr>
+<td>UAT-29</td>
+<td>Daily work</td>
+<td>Approvals page</td>
+<td>Property Manager</td>
+<td>Everything waiting on an Owner is listed, with the amount and how long it has waited.</td>
+<td>Medium</td>
+</tr>
+<tr>
+<td>UAT-30</td>
+<td>Daily work</td>
+<td>Find a Tenant's history in Profiles</td>
+<td>Property Manager</td>
+<td>Property, contacts and every Ticket are shown and editable in place.</td>
+<td>Medium</td>
+</tr>
+<tr>
+<td>UAT-31</td>
+<td>Daily work</td>
+<td>Use myEST8 on a phone between inspections</td>
+<td>Property Manager</td>
+<td>Everything fits, nothing needs zooming, and confirming works with a thumb.</td>
+<td>Medium</td>
+</tr>
+<tr>
+<td>UAT-32</td>
+<td>Overall</td>
+<td>"Which part of your repair process would this replace, and what would stop you using it?"</td>
+<td>Property Manager</td>
+<td>The answer is recorded word for word.</td>
+<td>High</td>
+</tr>
+</tbody>
+</table>
+<h2 id="feedback-questionnaire">Feedback questionnaire<a class="headerlink" href="#feedback-questionnaire" title="Permanent link">&para;</a></h2>
+<p>After the scenarios, each tester answers the 10 standard <strong>SUS</strong> statements (1 = strongly disagree … 5 = strongly agree), scored 0–100, and four open questions:</p>
+<ol>
+<li>What did you like most about myEST8?</li>
+<li>What was confusing, or what would you change first?</li>
+<li>What is missing that your Agency would need before using it?</li>
+<li>How do you handle repairs today, and how long does a typical repair take you?</li>
+</ol>
+<p>Question 4 also gives the baseline for the <a href="../impact-report/">Impact Delivery Report</a>.</p>
+<h2 id="results">Results<a class="headerlink" href="#results" title="Permanent link">&para;</a></h2>
+<p><em>To be completed after the sessions (5–9 November 2026).</em></p>
+<table>
+<thead>
+<tr>
+<th>Measure</th>
+<th>Result</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Testers who took part</td>
+<td>—</td>
+</tr>
+<tr>
+<td>Scenarios run / in scope</td>
+<td>— / 32</td>
+</tr>
+<tr>
+<td>Pass rate (executed)</td>
+<td>—</td>
+</tr>
+<tr>
+<td>High-priority pass rate</td>
+<td>—</td>
+</tr>
+<tr>
+<td>Defects logged (Critical / High / Medium / Low)</td>
+<td>—</td>
+</tr>
+<tr>
+<td>Open defects at sign-off</td>
+<td>—</td>
+</tr>
+<tr>
+<td>Average SUS score (lowest / highest)</td>
+<td>—</td>
+</tr>
+</tbody>
+</table>
+<h3 id="exit-criteria">Exit criteria<a class="headerlink" href="#exit-criteria" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Criterion</th>
+<th>Status</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Every High-priority scenario run by ≥ 3 testers</td>
+<td>Not yet met</td>
+</tr>
+<tr>
+<td>No open Critical defects</td>
+<td>—</td>
+</tr>
+<tr>
+<td>≤ 2 open High defects, each with a planned fix</td>
+<td>—</td>
+</tr>
+<tr>
+<td>Average SUS ≥ 68</td>
+<td>Not yet measured</td>
+</tr>
+<tr>
+<td>All feedback reviewed</td>
+<td>—</td>
+</tr>
+</tbody>
+</table>
+<h3 id="defect-log">Defect log<a class="headerlink" href="#defect-log" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>Scenario</th>
+<th>Summary</th>
+<th>Severity</th>
+<th>Status</th>
+<th>Fix</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>—</td>
+<td>—</td>
+<td>—</td>
+<td>—</td>
+<td>—</td>
+<td>—</td>
+</tr>
+</tbody>
+</table>
+<h3 id="key-feedback-themes">Key feedback themes<a class="headerlink" href="#key-feedback-themes" title="Permanent link">&para;</a></h3>
+<p><em>To be completed.</em></p>
+<h3 id="sign-off">Sign-off<a class="headerlink" href="#sign-off" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Build tested</td>
+<td>Production, <a href="https://myest8.vercel.app">https://myest8.vercel.app</a>, commit <strong><em>_</em></strong>_</td>
+</tr>
+<tr>
+<td>Decision</td>
+<td><strong><em>_</em></strong>_</td>
+</tr>
+<tr>
+<td>Conditions / known issues accepted</td>
+<td><strong><em>_</em></strong>_</td>
+</tr>
+<tr>
+<td>Signed by (product owner)</td>
+<td><strong><em>_</em></strong>_</td>
+</tr>
+</tbody>
+</table>
+<h2 id="automated-testing-before-uat">Automated testing before UAT<a class="headerlink" href="#automated-testing-before-uat" title="Permanent link">&para;</a></h2>
+<p>UAT tests fit and usability. Correctness is covered first by the automated suite, which runs on every push and must pass before anything reaches production:</p>
+<table>
+<thead>
+<tr>
+<th>Layer</th>
+<th>What it proves</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Domain and workflow (integration)</td>
+<td>The whole maintenance workflow through the app on real Postgres with a fake clock: inbound messages, guided questions, Quotes, approvals, Work Orders and reminders, including two Property Managers acting at once</td>
+</tr>
+<tr>
+<td>HTTP routes</td>
+<td>Every page and webhook: status codes, redirects, sign-in, same-origin checks and provider signatures</td>
+</tr>
+<tr>
+<td>Adapters (contract)</td>
+<td>Each provider adapter sends the request the provider expects and reads its response</td>
+</tr>
+<tr>
+<td>Browser end to end (Playwright)</td>
+<td>Critical journeys in Chromium against the real server: sign-up, sign-in, a Tenant's text becoming a Maintenance Request, data surviving a restart, keyboard access</td>
+</tr>
+<tr>
+<td>Production smoke test</td>
+<td>After every deploy: the landing page answers, and the worker route rejects a missing secret and accepts the right one</td>
+</tr>
+</tbody>
+</table>
+<p>That is about 1,400 test cases plus 22 browser specs, all running on throwaway databases with mocked providers, so the tests need no secrets and never touch production data.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../implementationPlan/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Implementation Plan">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                Implementation Plan
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../impact-report/" class="md-footer__link md-footer__link--next" aria-label="Next: Impact Delivery Report">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                Impact Delivery Report
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.tabs", "navigation.sections", "navigation.indexes", "navigation.footer", "navigation.tracking", "navigation.top", "content.code.copy"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+    
+  </body>
+</html>
